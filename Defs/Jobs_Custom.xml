@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<WorkGiverDef>
+		<defName>RestoreWall</defName>
+		<label>restore walls</label>
+		<giverClass>LayeredDestruction.WorkGiver_ConstructRestoreWall</giverClass>
+		<workType>Construction</workType>
+		<priorityInType>45</priorityInType>
+		<verb>restore</verb>
+		<gerund>restoring</gerund>
+		<scanThings>false</scanThings>
+		<scanCells>true</scanCells>
+		<doesSmoothing>true</doesSmoothing>
+		<requiredCapacities>
+		  <li>Manipulation</li>
+		</requiredCapacities>
+	  </WorkGiverDef>
+
+	<JobDef>
+		<defName>RestoreWall</defName>
+		<driverClass>LayeredDestruction.JobDriver_RestoreWall</driverClass>
+		<reportString>restoring TargetA.</reportString>
+		<allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+	</JobDef>
+
+	<DesignationDef>
+		<defName>RestoreWall</defName>
+		<texturePath>UI/Designators/EmptyTexture</texturePath>
+		<targetType>Thing</targetType>
+		<removeIfBuildingDespawned>true</removeIfBuildingDespawned>
+	  </DesignationDef>
+
+</Defs>

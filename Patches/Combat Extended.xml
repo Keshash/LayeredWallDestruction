@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <!-- 
+  HP tweaks: New HP =  Original HP - (1 layer + 2 layer HP)/3 (- 200 if Instantdestruction is off)
+ -->
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Combat Extended</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+        <!-- CE Embrasure -->
+      <operations>
+        <li Class="PatchOperationAdd">
+          <xpath>/Defs</xpath>
+          <value>
+            <ThingDef ParentName="LWD_Base_Climbable" MayRequire="CETeam.CombatExtended">
+              <defName>CE_Embrasure_Destr_Climbable</defName>
+              <label>breached embrasure</label>
+              <graphicData>
+                <texPath>Things/Building/Linked/CE_Embrasure_Climb</texPath>
+              </graphicData>
+              <comps>
+                <li Class="LayeredDestruction.CompProperties_LayeredDestruction">
+                  <NextLayerDef>CE_Embrasure_Destr_Rubble</NextLayerDef>
+                  <ParentLayerDef>CE_Embrasure</ParentLayerDef>
+                </li>
+              </comps>
+            </ThingDef>
+
+            <ThingDef ParentName="LWD_Base_Rubble" MayRequire="CETeam.CombatExtended">
+              <defName>CE_Embrasure_Destr_Rubble</defName>
+              <label>embrasure rubble</label>
+              <comps>
+                <li Class="LayeredDestruction.CompProperties_LayeredDestruction">
+                  <ParentLayerDef>CE_Embrasure</ParentLayerDef>
+                  <RestoreToParentWorkAmount>1000</RestoreToParentWorkAmount>
+                </li>
+              </comps>
+            </ThingDef>
+          </value>
+        </li>
+
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="CE_Embrasure"]</xpath>
+          <value>
+            <comps>
+              <li Class="LayeredDestruction.CompProperties_LayeredDestruction">
+                <NextLayerDef>CE_Embrasure_Destr_Rubble</NextLayerDef>
+                <NextLayerDef_Alternative>CE_Embrasure_Destr_Climbable</NextLayerDef_Alternative>
+              </li>
+            </comps>
+          </value>
+        </li>
+
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="CE_Embrasure"]/statBases/MaxHitPoints</xpath>
+          <value>
+            <!--  New HP =  300 - (100 + 50)/3 -->
+            <MaxHitPoints>250</MaxHitPoints>
+          </value>
+        </li>
+      </operations>
+    </match>
+  </Operation>
+
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Combat Extended Armory</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+
+        <li Class="PatchOperationAdd">
+          <xpath>/Defs</xpath>
+          <value>
+            <ThingDef ParentName="LWD_Base_Climbable">
+              <defName>CE_ReinforcedEmbrasure_Destr_Climbable</defName>
+              <comps>
+                <li Class="LayeredDestruction.CompProperties_LayeredDestruction">
+                  <NextLayerDef>CE_ReinforcedEmbrasure_Destr_Rubble</NextLayerDef>
+                  <ParentLayerDef>CE_ReinforcedEmbrasure</ParentLayerDef>
+                </li>
+              </comps>
+            </ThingDef>
+          
+            <ThingDef ParentName="LWD_Base_Rubble">
+              <defName>CE_ReinforcedEmbrasure_Destr_Rubble</defName>
+              <comps>
+                <li Class="LayeredDestruction.CompProperties_LayeredDestruction">
+                  <ParentLayerDef>CE_ReinforcedEmbrasure</ParentLayerDef>
+                  <RestoreToParentWorkAmount>1000</RestoreToParentWorkAmount>
+                </li>
+              </comps>
+            </ThingDef>
+          
+            <!-- CE:Armory Reinforced Wall -->
+            <ThingDef ParentName="LWD_Base_Shootable">
+              <defName>CE_ReinforcedWall_Destr_Shootable</defName>
+              <comps>
+                <li Class="LayeredDestruction.CompProperties_LayeredDestruction">
+                  <NextLayerDef>CE_ReinforcedWall_Destr_Rubble</NextLayerDef>
+                  <ParentLayerDef>CE_ReinforcedWall</ParentLayerDef>
+                  <RestoreToParentWorkAmount>1200</RestoreToParentWorkAmount>
+                </li>
+              </comps>
+            </ThingDef>
+          
+            <ThingDef ParentName="LWD_Base_Climbable">
+              <defName>CE_ReinforcedWall_Destr_Climbable</defName>
+              <comps>
+                <li Class="LayeredDestruction.CompProperties_LayeredDestruction">
+                  <NextLayerDef>CE_ReinforcedWall_Destr_Rubble</NextLayerDef>
+                  <ParentLayerDef>CE_ReinforcedWall</ParentLayerDef>
+                  <RestoreToParentWorkAmount>1200</RestoreToParentWorkAmount>
+                </li>
+              </comps>
+            </ThingDef>
+          
+            <ThingDef ParentName="LWD_Base_Rubble">
+              <defName>CE_ReinforcedWall_Destr_Rubble</defName>
+              <comps>
+                <li Class="LayeredDestruction.CompProperties_LayeredDestruction">
+                  <ParentLayerDef>CE_ReinforcedWall</ParentLayerDef>
+                  <RestoreToParentWorkAmount>1000</RestoreToParentWorkAmount>
+                </li>
+              </comps>
+            </ThingDef>
+          </value>
+        </li>
+
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="CE_ReinforcedWall"]/comps</xpath>
+          <value>
+            <li Class="LayeredDestruction.CompProperties_LayeredDestruction">
+              <NextLayerDef>CE_ReinforcedWall_Destr_Shootable</NextLayerDef>
+              <NextLayerDef_Alternative>CE_ReinforcedWall_Destr_Climbable</NextLayerDef_Alternative>
+              <doubleDowngradeChance>0.1</doubleDowngradeChance>
+              <InstantFullDestructionChance>0</InstantFullDestructionChance>
+            </li>
+          </value>
+        </li>
+
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="CE_ReinforcedWall"]/statBases/MaxHitPoints</xpath>
+          <value>
+            <!--  New HP =  600 - (100 + 50)/3 - 200 -->
+            <MaxHitPoints>350</MaxHitPoints>
+          </value>
+        </li>
+
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="CE_ReinforcedEmbrasure"]</xpath>
+          <value>
+            <comps Inherit="False">
+              <li Class="LayeredDestruction.CompProperties_LayeredDestruction">
+                <NextLayerDef>CE_ReinforcedEmbrasure_Destr_Rubble</NextLayerDef>
+                <NextLayerDef_Alternative>CE_ReinforcedEmbrasure_Destr_Climbable</NextLayerDef_Alternative>
+                <doubleDowngradeChance>0.1</doubleDowngradeChance>
+                <InstantFullDestructionChance>0</InstantFullDestructionChance>
+              </li>
+            </comps>
+          </value>
+        </li>
+      </operations>
+    </match>
+  </Operation>
+
+</Patch>

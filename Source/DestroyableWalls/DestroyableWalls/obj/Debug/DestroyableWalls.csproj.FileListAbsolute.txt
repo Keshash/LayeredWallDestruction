@@ -1,0 +1,8 @@
+C:\Games\RimWorld.v1.4.3622\Mods\DestroyableWalls\Source\DestroyableWalls\DestroyableWalls\obj\Debug\DestroyableWalls.csproj.AssemblyReference.cache
+C:\Games\RimWorld.v1.4.3622\Mods\DestroyableWalls\Source\DestroyableWalls\DestroyableWalls\obj\Debug\DestroyableWalls.csproj.CoreCompileInputs.cache
+C:\Games\RimWorld.v1.4.3622\Mods\DestroyableWalls\Source\DestroyableWalls\DestroyableWalls\bin\Debug\DestroyableWalls.dll
+C:\Games\RimWorld.v1.4.3622\Mods\DestroyableWalls\Source\DestroyableWalls\DestroyableWalls\bin\Debug\DestroyableWalls.pdb
+C:\Games\RimWorld.v1.4.3622\Mods\DestroyableWalls\Source\DestroyableWalls\DestroyableWalls\obj\Debug\DestroyableWalls.dll
+C:\Games\RimWorld.v1.4.3622\Mods\DestroyableWalls\Source\DestroyableWalls\DestroyableWalls\obj\Debug\DestroyableWalls.pdb
+C:\Games\RimWorld.v1.4.3622\Mods\DestroyableWalls\Assemblies\DestroyableWalls.dll
+C:\Games\RimWorld.v1.4.3622\Mods\DestroyableWalls\Assemblies\DestroyableWalls.pdb

@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <!-- 
+  HP tweaks: New HP =  Original HP - (1 layer + 2 layer HP)/3 (- 200 if Instantdestruction is off)
+ -->
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Vanilla Furniture Expanded - Architect</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+
+      <operations>
+        <li Class="PatchOperationAdd">
+          <xpath>/Defs</xpath>
+          <value>
+
+            <ThingDef ParentName="LWD_Base_Shootable">
+              <defName>VFEArch_LogWall_Destr_Shootable</defName>
+              <label>loophole log wall</label>
+              <stuffCategories Inherit="False">
+              </stuffCategories>
+              <costStuffCount></costStuffCount>
+              <useStuffTerrainAffordance>false</useStuffTerrainAffordance>
+              <graphicData>
+                <texPath>Things/Building/Linked/VE_Log/Wall_Log_Shoot</texPath>
+                <graphicClass>Graphic_Single</graphicClass>
+              </graphicData>
+              <comps>
+                <li Class="LayeredDestruction.CompProperties_LayeredDestruction">
+                  <NextLayerDef>VFEArch_LogWall_Destr_Rubble</NextLayerDef>
+                  <ParentLayerDef>VFEArch_LogWall</ParentLayerDef>
+                </li>
+              </comps>
+            </ThingDef>
+
+            <ThingDef ParentName="LWD_Base_Climbable">
+              <defName>VFEArch_LogWall_Destr_Climbable</defName>
+              <label>breached log wall</label>
+              <stuffCategories Inherit="False">
+              </stuffCategories>
+              <costStuffCount></costStuffCount>
+              <useStuffTerrainAffordance>false</useStuffTerrainAffordance>
+              <graphicData>
+                <texPath>Things/Building/Linked/VE_Log/Wall_Log_Climb</texPath>
+                <graphicClass>Graphic_Single</graphicClass>
+              </graphicData>
+              <comps>
+                <li Class="LayeredDestruction.CompProperties_LayeredDestruction">
+                  <NextLayerDef>VFEArch_LogWall_Destr_Rubble</NextLayerDef>
+                  <ParentLayerDef>VFEArch_LogWall</ParentLayerDef>
+                </li>
+              </comps>
+            </ThingDef>
+
+            <ThingDef ParentName="LWD_Base_Rubble">
+              <defName>VFEArch_LogWall_Destr_Rubble</defName>
+              <label>log wall rubble</label>
+              <graphicData>
+                <texPath>Things/Building/Linked/VE_Log/Wall_Log_Rubble</texPath>
+                <graphicClass>Graphic_Single</graphicClass>
+              </graphicData>
+              <stuffCategories Inherit="False">
+              </stuffCategories>
+              <costStuffCount></costStuffCount>
+              <useStuffTerrainAffordance>false</useStuffTerrainAffordance>
+              <comps>
+                <li Class="LayeredDestruction.CompProperties_LayeredDestruction">
+                  <ParentLayerDef>VFEArch_LogWall</ParentLayerDef>
+                  <RestoreToParentWorkAmount>1000</RestoreToParentWorkAmount>
+                </li>
+              </comps>
+            </ThingDef>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="VFEArch_LogWall"]/comps</xpath>
+          <value>
+              <li Class="LayeredDestruction.CompProperties_LayeredDestruction">
+                <NextLayerDef>VFEArch_LogWall_Destr_Shootable</NextLayerDef>
+                <NextLayerDef_Alternative>VFEArch_LogWall_Destr_Climbable</NextLayerDef_Alternative>
+              </li>
+          </value>
+        </li>
+
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="VFEArch_LogWall"]/statBases/MaxHitPoints</xpath>
+          <value>
+            <!--  New HP =  250 - (100 + 50)/3 -->
+            <MaxHitPoints>200</MaxHitPoints>
+          </value>
+        </li>
+
+
+        <!-- armored wall -->
+        <li Class="PatchOperationAdd">
+          <xpath>/Defs</xpath>
+          <value>
+            <ThingDef ParentName="LWD_Base_Climbable">
+              <defName>VFEArch_ArmoredWall_Destr_Climbable</defName>
+              <label>breached armored wall</label>
+              <statBases>
+                <MaxHitPoints>160</MaxHitPoints>
+              </statBases>
+              <graphicData>
+                <texPath>Things/Building/Linked/VE_Armored/VFEArch_ArmoredWall_Climb</texPath>
+                <graphicClass>Graphic_Single</graphicClass>
+              </graphicData>
+              <comps>
+                <li Class="LayeredDestruction.CompProperties_LayeredDestruction">
+                  <NextLayerDef>VFEArch_ArmoredWall_Destr_Rubble</NextLayerDef>
+                  <ParentLayerDef>VFEArch_ArmoredWall</ParentLayerDef>
+                </li>
+              </comps>
+            </ThingDef>
+
+            <ThingDef ParentName="LWD_Base_Shootable">
+              <defName>VFEArch_ArmoredWall_Destr_Shootable</defName>
+              <label>loophole armored wall</label>
+              <statBases>
+                <MaxHitPoints>160</MaxHitPoints>
+              </statBases>
+              <graphicData>
+                <texPath>Things/Building/Linked/VE_Armored/VFEArch_ArmoredWall_Shoot</texPath>
+                <graphicClass>Graphic_Single</graphicClass>
+              </graphicData>
+              <comps>
+                <li Class="LayeredDestruction.CompProperties_LayeredDestruction">
+                  <NextLayerDef>VFEArch_ArmoredWall_Destr_Rubble</NextLayerDef>
+                  <ParentLayerDef>VFEArch_ArmoredWall</ParentLayerDef>
+                </li>
+              </comps>
+            </ThingDef>
+
+            <ThingDef ParentName="LWD_Base_Rubble">
+              <defName>VFEArch_ArmoredWall_Destr_Rubble</defName>
+              <label>armored wall rubble</label>
+              <comps>
+                <li Class="LayeredDestruction.CompProperties_LayeredDestruction">
+                  <ParentLayerDef>VFEArch_ArmoredWall</ParentLayerDef>
+                  <RestoreToParentWorkAmount>1500</RestoreToParentWorkAmount>
+                </li>
+              </comps>
+            </ThingDef>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="VFEArch_ArmoredWall"]/comps</xpath>
+          <value>
+              <li Class="LayeredDestruction.CompProperties_LayeredDestruction">
+                <NextLayerDef>VFEArch_ArmoredWall_Destr_Rubble</NextLayerDef>
+                <NextLayerDef_Alternative>VFEArch_ArmoredWall_Destr_Climbable</NextLayerDef_Alternative>
+                <doubleDowngradeChance>0.1</doubleDowngradeChance>
+                <InstantFullDestructionChance>0</InstantFullDestructionChance>
+              </li>
+          </value>
+        </li>
+
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="VFEArch_ArmoredWall"]/statBases/MaxHitPoints</xpath>
+          <value>
+            <!--  New HP =  800 - (100 + 50)/3 - 200 -->
+            <MaxHitPoints>550</MaxHitPoints>
+          </value>
+        </li>
+
+        <li Class="PatchOperationFindMod">
+          <mods>
+            <li>Royalty</li>
+          </mods>
+          <match Class="PatchOperationSequence">
+            <operations>
+              <li Class="PatchOperationAdd">
+                <xpath>/Defs</xpath>
+                <value>
+
+                  <ThingDef ParentName="LWD_Base_Shootable">
+                    <defName>VFEArch_FineWall_Destr_Shootable</defName>
+                    <label>loophole fine wall</label>
+                    <graphicData>
+                      <texPath>Things/Building/Linked/VE_Fine/Shoot</texPath>
+                    </graphicData>
+                    <comps>
+                      <li Class="LayeredDestruction.CompProperties_LayeredDestruction">
+                        <NextLayerDef>VFEArch_FineWall_Destr_Rubble</NextLayerDef>
+                        <ParentLayerDef>VFEArch_FineWall</ParentLayerDef>
+                      </li>
+                    </comps>
+                  </ThingDef>
+
+                  <ThingDef ParentName="LWD_Base_Climbable">
+                    <defName>VFEArch_FineWall_Destr_Climbable</defName>
+                    <label>breached fine wall</label>
+                    <graphicData>
+                      <texPath>Things/Building/Linked/VE_Fine/Climb</texPath>
+                    </graphicData>
+                    <comps>
+                      <li Class="LayeredDestruction.CompProperties_LayeredDestruction">
+                        <NextLayerDef>VFEArch_FineWall_Destr_Rubble</NextLayerDef>
+                        <ParentLayerDef>VFEArch_FineWall</ParentLayerDef>
+                      </li>
+                    </comps>
+                  </ThingDef>
+
+                  <ThingDef ParentName="LWD_Base_Rubble">
+                    <defName>VFEArch_FineWall_Destr_Rubble</defName>
+                    <label>fine wall rubble</label>
+                    <comps>
+                      <li Class="LayeredDestruction.CompProperties_LayeredDestruction">
+                        <ParentLayerDef>VFEArch_FineWall</ParentLayerDef>
+                        <RestoreToParentWorkAmount>1000</RestoreToParentWorkAmount>
+                      </li>
+                    </comps>
+                  </ThingDef>
+                </value>
+              </li>
+              <!-- check comps adding result -->
+              <li Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="VFEArch_FineWall"]/comps</xpath>
+                <value>
+                    <li Class="LayeredDestruction.CompProperties_LayeredDestruction">
+                      <NextLayerDef>VFEArch_FineWall_Destr_Shootable</NextLayerDef>
+                      <NextLayerDef_Alternative>VFEArch_FineWall_Destr_Climbable</NextLayerDef_Alternative>
+                    </li>
+                </value>
+              </li>
+
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="VFEArch_FineWall"]/statBases/MaxHitPoints</xpath>
+                <value>
+                  <!--  New HP =  300 - (100 + 50)/3 -->
+                  <MaxHitPoints>250</MaxHitPoints>
+                </value>
+              </li>
+            </operations>
+          </match>
+        </li>
+
+
+      </operations>
+    </match>
+  </Operation>
+
+
+</Patch>
