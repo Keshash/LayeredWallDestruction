@@ -10,6 +10,13 @@ namespace LayeredDestruction
 {
     internal class JobDriver_RestoreWall : JobDriver
     {
+        //protected int BaseWorkAmount
+        //{
+        //    get
+        //    {
+        //        return 600;
+        //    }
+        //}
 
         protected DesignationDef DesDef
         {
@@ -38,7 +45,7 @@ namespace LayeredDestruction
             };
             doWork.tickAction = delegate ()
             {
-                float num = doWork.actor.GetStatValue(StatDefOf.SmoothingSpeed, true, -1) * 1.7f;
+                float num = doWork.actor.GetStatValue(StatDefOf.ConstructionSpeed, true, -1) * 1.7f;
                 this.workLeft -= num;
                 if (doWork.actor.skills != null)
                 {
@@ -68,6 +75,7 @@ namespace LayeredDestruction
 
         protected void DoEffect()
         {
+            //RestoreWallUtility.Notify_SmoothedByPawn(RestoreWallUtility.RestoreWall(base.TargetA.Thing, this.pawn), this.pawn);
             RestoreWallUtility.RestoreWall(base.TargetA.Thing, this.pawn);
         }
 

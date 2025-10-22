@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<FleckDef ParentName="FleckBase_RandomGraphic_Thrown">
+		<defName>Fleck_LWD_Planks</defName>
+		<randomGraphics>
+		  <li>
+			<graphicClass>Graphic_Fleck</graphicClass>
+			<texPath>Things/Flecks/Wood/Fleck_Wood_a</texPath>
+			<shaderType>Mote</shaderType>
+			<renderInstanced>true</renderInstanced>
+		  </li>
+		  <li>
+			<graphicClass>Graphic_Fleck</graphicClass>
+			<texPath>Things/Flecks/Wood/Fleck_Wood_b</texPath>
+			<shaderType>Mote</shaderType>
+			<renderInstanced>true</renderInstanced>
+		  </li>
+		  <li>
+			<graphicClass>Graphic_Fleck</graphicClass>
+			<texPath>Things/Flecks/Wood/Fleck_Wood_c</texPath>
+			<shaderType>Mote</shaderType>
+			<renderInstanced>true</renderInstanced>
+		  </li>
+		</randomGraphics>
+		<altitudeLayer>MoteLow</altitudeLayer>
+		<solidTime>2.0</solidTime>
+		<fadeOutTime>0.2</fadeOutTime>
+		<collide>true</collide>
+	  </FleckDef>
+
+	  <FleckDef ParentName="FleckBase_RandomGraphic_Thrown">
+		<defName>Fleck_LWD_Brick</defName>
+		<randomGraphics>
+		  <li>
+			<graphicClass>Graphic_Fleck</graphicClass>
+			<texPath>Things/Flecks/Brick/Fleck_Brick_a</texPath>
+			<shaderType>Mote</shaderType>
+			<renderInstanced>true</renderInstanced>
+		  </li>
+		  <li>
+			<graphicClass>Graphic_Fleck</graphicClass>
+			<texPath>Things/Flecks/Brick/Fleck_Brick_b</texPath>
+			<shaderType>Mote</shaderType>
+			<renderInstanced>true</renderInstanced>
+		  </li>
+		  <li>
+			<graphicClass>Graphic_Fleck</graphicClass>
+			<texPath>Things/Flecks/Brick/Fleck_Brick_c</texPath>
+			<shaderType>Mote</shaderType>
+			<renderInstanced>true</renderInstanced>
+		  </li>
+		</randomGraphics>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<solidTime>3.0</solidTime>
+		<fadeOutTime>0.2</fadeOutTime>
+		<collide>true</collide>
+	  </FleckDef>
+
+	  <FleckDef ParentName="FleckBase_RandomGraphic_Thrown">
+		<defName>Fleck_LWD_Smooth</defName>
+		<randomGraphics>
+		  <li>
+			<graphicClass>Graphic_Fleck</graphicClass>
+			<texPath>Things/Flecks/Smooth/Fleck_Smooth_a</texPath>
+			<shaderType>Mote</shaderType>
+			<renderInstanced>true</renderInstanced>
+		  </li>
+		  <li>
+			<graphicClass>Graphic_Fleck</graphicClass>
+			<texPath>Things/Flecks/Smooth/Fleck_Smooth_b</texPath>
+			<shaderType>Mote</shaderType>
+			<renderInstanced>true</renderInstanced>
+		  </li>
+		  <li>
+			<graphicClass>Graphic_Fleck</graphicClass>
+			<texPath>Things/Flecks/Smooth/Fleck_Smooth_c</texPath>
+			<shaderType>Mote</shaderType>
+			<renderInstanced>true</renderInstanced>
+		  </li>
+		</randomGraphics>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<solidTime>3.0</solidTime>
+		<fadeOutTime>0.2</fadeOutTime>
+		<collide>true</collide>
+	  </FleckDef>
+
+</Defs>

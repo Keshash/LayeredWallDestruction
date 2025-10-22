@@ -6,3 +6,11 @@ C:\Games\RimWorld.v1.4.3622\Mods\DestroyableWalls\Source\DestroyableWalls\Destro
 C:\Games\RimWorld.v1.4.3622\Mods\DestroyableWalls\Source\DestroyableWalls\DestroyableWalls\obj\Debug\DestroyableWalls.pdb
 C:\Games\RimWorld.v1.4.3622\Mods\DestroyableWalls\Assemblies\DestroyableWalls.dll
 C:\Games\RimWorld.v1.4.3622\Mods\DestroyableWalls\Assemblies\DestroyableWalls.pdb
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\DestroyableWalls\1.5\Assemblies\DestroyableWalls.dll
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\DestroyableWalls\1.5\Assemblies\DestroyableWalls.pdb
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\DestroyableWalls\Source\DestroyableWalls\DestroyableWalls\obj\Debug\DestroyableWalls.csproj.AssemblyReference.cache
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\DestroyableWalls\Source\DestroyableWalls\DestroyableWalls\obj\Debug\DestroyableWalls.csproj.CoreCompileInputs.cache
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\DestroyableWalls\Source\DestroyableWalls\DestroyableWalls\obj\Debug\DestroyableWalls.dll
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\DestroyableWalls\Source\DestroyableWalls\DestroyableWalls\obj\Debug\DestroyableWalls.pdb
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\DestroyableWalls\1.6\Assemblies\DestroyableWalls.dll
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\DestroyableWalls\1.6\Assemblies\DestroyableWalls.pdb

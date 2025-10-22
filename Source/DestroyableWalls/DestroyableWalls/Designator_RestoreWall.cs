@@ -5,9 +5,18 @@ using RimWorld;
 
 namespace LayeredDestruction
 {
+    // Token: 0x020015E8 RID: 5608
     public class Designator_RestoreWall : Designator_Cells
     {
-        public override int DraggableDimensions => 2;
+        //public override int DraggableDimensions => 2;
+
+        public override DrawStyleCategoryDef DrawStyleCategory
+        {
+            get
+            {
+                return DrawStyleCategoryDefOf.Orders;
+            }
+        }
         protected override DesignationDef Designation => RestoreDesignationDefOf.RestoreWall;
 
         public override bool DragDrawMeasurements
@@ -60,6 +69,17 @@ namespace LayeredDestruction
             {
                 return false;
             }
+            //if (base.Map.designationManager.DesignationAt(c, RestoreDesignationDefOf.RestoreWall) != null || base.Map.designationManager.DesignationOn(c, RestoreDesignationDefOf.RestoreWall) != null)
+            //{
+            //    return "SurfaceBeingSmoothed".Translate();
+            //}
+            //foreach (Thing t in c.GetThingList(base.Map))
+            //{
+            //    if (this.CanDesignateThing(t).Accepted)
+            //    {
+            //        return true;
+            //    }
+            //}
             if (c.InNoBuildEdgeArea(base.Map))
             {
                 return "TooCloseToMapEdge".Translate();
@@ -78,8 +98,10 @@ namespace LayeredDestruction
             if (edifice != null && edifice.def.GetCompProperties<CompProperties_LayeredDestruction>().ParentLayerDef != null)
             {
                 base.Map.designationManager.AddDesignation(new Designation(c, RestoreDesignationDefOf.RestoreWall, null));
+                //base.Map.designationManager.TryRemoveDesignation(c, DesignationDefOf.Mine);
                 return;
             }
+            //base.Map.designationManager.AddDesignation(new Designation(c, RestoreDesignationDefOf.RestoreWall, null));
         }
 
         public override void SelectedUpdate()

@@ -21,8 +21,7 @@ namespace LayeredDestruction
             {
                 yield return designation.target.Cell;
             }
-            IEnumerator<Designation> enumerator = null;
-            yield break;
+            // IEnumerator<Designation> enumerator = null;
             yield break;
         }
 
@@ -33,6 +32,7 @@ namespace LayeredDestruction
 
         public override bool HasJobOnCell(Pawn pawn, IntVec3 c, bool forced = false)
         {
+            //return pawn.Map.designationManager.DesignationOn(c.GetEdifice(pawn.Map), RestoreDesignationDefOf.RestoreWall) != null;
             Building edifice = c.GetEdifice(pawn.Map);
             if (c.IsForbidden(pawn) || pawn.Map.designationManager.DesignationOn(edifice, RestoreDesignationDefOf.RestoreWall) == null || pawn.Faction != Faction.OfPlayer)
             {

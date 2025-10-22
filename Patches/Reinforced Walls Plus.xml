@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+    <Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>Reinforced Walls+</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+            <operations>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs</xpath>
+                    <value>
+                        <ThingDef ParentName="LWD_Base_Climbable" >
+                            <defName>RWP_Embrasure_Destr_Climbable</defName>
+                            <label>breached reinforced embrasure</label>
+                            <comps>
+                                <li Class="LayeredDestruction.CompProperties_LayeredDestruction">
+                                    <NextLayerDef>RWP_Embrasure_Destr_Rubble</NextLayerDef>
+                                    <ParentLayerDef>ReinforcedEmbrasure</ParentLayerDef>
+                                </li>
+                            </comps>
+                        </ThingDef>
+
+                        <ThingDef ParentName="LWD_Base_Rubble" >
+                            <defName>RWP_Embrasure_Destr_Rubble</defName>
+                            <label>reinforced embrasure rubble</label>
+                            <comps>
+                                <li Class="LayeredDestruction.CompProperties_LayeredDestruction">
+                                    <ParentLayerDef>ReinforcedEmbrasure</ParentLayerDef>
+                                    <RestoreToParentWorkAmount>1000</RestoreToParentWorkAmount>
+                                </li>
+                            </comps>
+                        </ThingDef>
+
+                        <ThingDef ParentName="LWD_Base_Shootable">
+                            <defName>RWP_Wall_Destr_Shootable</defName>
+                            <comps>
+                                <li Class="LayeredDestruction.CompProperties_LayeredDestruction">
+                                    <NextLayerDef>RWP_Wall_Destr_Rubble</NextLayerDef>
+                                    <ParentLayerDef>ReinforcedWall</ParentLayerDef>
+                                </li>
+                            </comps>
+                        </ThingDef>
+
+                        <ThingDef ParentName="LWD_Base_Climbable">
+                            <defName>RWP_Wall_Destr_Climbable</defName>
+                            <comps>
+                                <li Class="LayeredDestruction.CompProperties_LayeredDestruction">
+                                    <NextLayerDef>RWP_Wall_Destr_Rubble</NextLayerDef>
+                                    <ParentLayerDef>ReinforcedWall</ParentLayerDef>
+                                </li>
+                            </comps>
+                        </ThingDef>
+
+                        <ThingDef ParentName="LWD_Base_Rubble">
+                            <defName>RWP_Wall_Destr_Rubble</defName>
+                            <comps>
+                                <li Class="LayeredDestruction.CompProperties_LayeredDestruction">
+                                    <ParentLayerDef>ReinforcedWall</ParentLayerDef>
+                                    <RestoreToParentWorkAmount>1000</RestoreToParentWorkAmount>
+                                </li>
+                            </comps>
+                        </ThingDef>
+                    </value>
+
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="ReinforcedWall"]</xpath>
+                    <value>
+                        <comps>
+                            <li Class="LayeredDestruction.CompProperties_LayeredDestruction">
+                                <NextLayerDef>RWP_Wall_Destr_Shootable</NextLayerDef>
+                                <NextLayerDef_Alternative>RWP_Wall_Destr_Climbable</NextLayerDef_Alternative>
+                            </li>
+                        </comps>
+                    </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="ReinforcedEmbrasure"]</xpath>
+                    <value>
+                        <comps Inherit="False">
+                            <li Class="LayeredDestruction.CompProperties_LayeredDestruction">
+                                <NextLayerDef>RWP_Embrasure_Destr_Rubble</NextLayerDef>
+                                <NextLayerDef_Alternative>RWP_Embrasure_Destr_Climbable</NextLayerDef_Alternative>
+                            </li>
+                        </comps>
+                    </value>
+                </li>
+
+
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="ReinforcedWall"]/statBases/MaxHitPoints</xpath>
+                    <value>
+                        <!--  New HP =  900 - (100 + 50)/3 -->
+                        <MaxHitPoints>850</MaxHitPoints>
+                    </value>
+                </li>
+
+
+                <li Class="PatchOperationAdd">
+                  <xpath>Defs</xpath>
+                  <value>
+                      <ThingDef ParentName="LWD_Base_Climbable" >
+                          <defName>RWP_Power_Embrasure_Destr_Climbable</defName>
+                          <label>breached reinforced embrasure</label>
+                          <comps>
+                              <li Class="LayeredDestruction.CompProperties_LayeredDestruction">
+                                  <NextLayerDef>RWP_Power_Embrasure_Destr_Rubble</NextLayerDef>
+                                  <ParentLayerDef>PowerEmbrasure</ParentLayerDef>
+                              </li>
+                          </comps>
+                      </ThingDef>
+
+                      <ThingDef ParentName="LWD_Base_Rubble" >
+                          <defName>RWP_Power_Embrasure_Destr_Rubble</defName>
+                          <label>reinforced embrasure rubble</label>
+                          <comps>
+                              <li Class="LayeredDestruction.CompProperties_LayeredDestruction">
+                                  <ParentLayerDef>PowerEmbrasure</ParentLayerDef>
+                                  <RestoreToParentWorkAmount>1000</RestoreToParentWorkAmount>
+                              </li>
+                          </comps>
+                      </ThingDef>
+
+                      <ThingDef ParentName="LWD_Base_Shootable">
+                          <defName>RWP_Power_Wall_Destr_Shootable</defName>
+                          <comps>
+                              <li Class="LayeredDestruction.CompProperties_LayeredDestruction">
+                                  <NextLayerDef>RWP_Power_Wall_Destr_Rubble</NextLayerDef>
+                                  <ParentLayerDef>PowerWall</ParentLayerDef>
+                              </li>
+                          </comps>
+                      </ThingDef>
+
+                      <ThingDef ParentName="LWD_Base_Climbable">
+                          <defName>RWP_Power_Wall_Destr_Climbable</defName>
+                          <comps>
+                              <li Class="LayeredDestruction.CompProperties_LayeredDestruction">
+                                  <NextLayerDef>RWP_Power_Wall_Destr_Rubble</NextLayerDef>
+                                  <ParentLayerDef>PowerWall</ParentLayerDef>
+                              </li>
+                          </comps>
+                      </ThingDef>
+
+                      <ThingDef ParentName="LWD_Base_Rubble">
+                          <defName>RWP_Power_Wall_Destr_Rubble</defName>
+                          <comps>
+                              <li Class="LayeredDestruction.CompProperties_LayeredDestruction">
+                                  <ParentLayerDef>PowerWall</ParentLayerDef>
+                                  <RestoreToParentWorkAmount>1000</RestoreToParentWorkAmount>
+                              </li>
+                          </comps>
+                      </ThingDef>
+                  </value>
+
+              </li>
+              <li Class="PatchOperationReplace">
+                  <xpath>Defs/ThingDef[defName="PowerWall"]/comps</xpath>
+                  <value>
+                      <comps Inherit="False">
+                          <li Class="LayeredDestruction.CompProperties_LayeredDestruction">
+                              <NextLayerDef>RWP_Power_Wall_Destr_Shootable</NextLayerDef>
+                              <NextLayerDef_Alternative>RWP_Power_Wall_Destr_Climbable</NextLayerDef_Alternative>
+                          </li>
+                          <li Class="CompProperties_Explosive">
+                            <explosiveRadius>1</explosiveRadius>
+                            <explosiveDamageType>EMP</explosiveDamageType>
+                          </li>
+                          <li Class="CompProperties_Power">
+                            <compClass>CompPowerTrader</compClass>
+                            <basePowerConsumption>100</basePowerConsumption>
+                            <shortCircuitInRain>false</shortCircuitInRain>
+                            <transmitsPower>true</transmitsPower>
+                            <soundAmbientProducingPower>ChemfuelFiredGenerator_Ambience</soundAmbientProducingPower>
+                          </li>
+                          <li Class="CompProperties_Flickable" />
+                          <li Class="CompProperties_Glower">
+                            <glowRadius>2.0</glowRadius>
+                            <glowColor>(0,235,235)</glowColor>
+                          </li>
+                      </comps>
+                  </value>
+              </li>
+
+              <li Class="PatchOperationAdd">
+                  <xpath>Defs/ThingDef[defName="PowerEmbrasure"]</xpath>
+                  <value>
+                      <comps Inherit="False">
+                          <li Class="LayeredDestruction.CompProperties_LayeredDestruction">
+                              <NextLayerDef>RWP_Power_Embrasure_Destr_Rubble</NextLayerDef>
+                              <NextLayerDef_Alternative>RWP_Power_Embrasure_Destr_Climbable</NextLayerDef_Alternative>
+                          </li>
+                          <li Class="CompProperties_Explosive">
+                            <explosiveRadius>1</explosiveRadius>
+                            <explosiveDamageType>EMP</explosiveDamageType>
+                          </li>
+                          <li Class="CompProperties_Power">
+                            <compClass>CompPowerTrader</compClass>
+                            <basePowerConsumption>100</basePowerConsumption>
+                            <shortCircuitInRain>false</shortCircuitInRain>
+                            <transmitsPower>true</transmitsPower>
+                            <soundAmbientProducingPower>ChemfuelFiredGenerator_Ambience</soundAmbientProducingPower>
+                          </li>
+                          <li Class="CompProperties_Flickable" />
+                          <li Class="CompProperties_Glower">
+                            <glowRadius>2.0</glowRadius>
+                            <glowColor>(0,235,235)</glowColor>
+                          </li>
+                      </comps>
+                  </value>
+              </li>
+
+                
+            </operations>
+        </match>
+    </Operation>
+</Patch>
